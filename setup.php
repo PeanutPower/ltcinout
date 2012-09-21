@@ -34,7 +34,7 @@
 	
 	// add "dep_addr" (deposit address) column to "user" table
 	// we will only have 1 deposit address per user
-	$result = $db->query("ALTER TABLE user ADD COLUMN dep_addr varchar(34) NOT NULL DEFAULT 0;");
+	$result = $db->query("ALTER TABLE user ADD COLUMN dep_addr varchar(34) NOT NULL DEFAULT '';");
 	if (!$result){
 		printf("error adding column to table: %s\n", mysqli_error($db));
 	}
