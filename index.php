@@ -1,7 +1,8 @@
 <link rel="stylesheet" type="text/css" href="main.css"/>
 <?php
 
-	require_once "db.php";
+	require_once "db.inc";
+	require_once "bitcoin/bitcoin.inc";
 
 	$perform = $_POST["perform"];
 	

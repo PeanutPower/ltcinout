@@ -1,6 +1,6 @@
 <?php
 
-	require_once "db.php";
+	require_once "db.inc";
 	
 	$rows = $db->query("SELECT * FROM user id LIMIT 100");
 
