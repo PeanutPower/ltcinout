@@ -60,6 +60,28 @@
 				
 	}
 	
+	if ($perform == "sendsafe"){
+	
+		$btclient = new BitcoinClient("http",$btclogin["username"],$btclogin["password"],$btclogin["host"],$btclogin["port"],"",$rpc_debug);
+		
+		$balance = $btclient-> getbalance("hotwallet");
+				
+		if ($balance > 1){
+		
+		$amount_to_move = $balance - 0.1;
+		
+		$btclient-> sendfrom("hotwallet", $safe_wallet_address, $amount_to_move, $minconf = 1);
+		print "$amount_to_move forwarded to safe wallet";
+				
+		} else {
+		
+		print "Hotwallet balance less than 1";
+		
+		}
+	
+	
+	}
+	
 	include_once "listusers.php";
 	
 ?>
@@ -109,5 +131,17 @@
 </td>
 </tr>
 <input type="hidden" name="perform" value="checkbalance"/>
+</table>
+</form>
+
+<h2>Hotwallet</h2>
+<form action="." method="POST">
+<table>
+<tr>
+<td colspan="2">
+<input type="submit" value="Send to SafeWallet"/>
+</td>
+</tr>
+<input type="hidden" name="perform" value="sendsafe"/>
 </table>
 </form>
