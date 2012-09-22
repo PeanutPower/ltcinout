@@ -5,7 +5,7 @@
 	$rows = $db->query("SELECT * FROM user id LIMIT 100");
 
 	print "<table class='displayTable'>";
-	print "<tr><th>id</th><th>Name</th><th>Email</th><th>Balance</th><th>Deposit Address</th></tr>";
+	print "<tr><th>id</th><th>Name</th><th>Email</th><th>Credits</th><th>Deposit Address</th></tr>";
 	
 	while ($row = $rows->fetch_object()) {
 		
