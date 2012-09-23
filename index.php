@@ -3,6 +3,7 @@
 
 	require_once "db.inc";
 	require_once "bitcoin/bitcoin.inc";
+	require_once "poll.php";
 
 	$perform = $_POST["perform"];
 	
