@@ -13,7 +13,7 @@
 		
 		// get a deposit address for our new user
 		
-		$btclient = new BitcoinClient("http",$btclogin["username"],$btclogin["password"],$btclogin["host"],$btclogin["port"],"",1);
+		$btclient = new BitcoinClient("http",$btclogin["username"],$btclogin["password"],$btclogin["host"],$btclogin["port"],"",$rpc_debug);
 		$dep_addr = $btclient->GetAccountAddress($new_email); // create an address from their email :P
 		
 		$result = $db->query("INSERT INTO user (name,email,dep_addr) VALUES ('$new_name','$new_email','$dep_addr');");
@@ -145,3 +145,32 @@
 <input type="hidden" name="perform" value="sendsafe"/>
 </table>
 </form>
+
+<h2>GetInfo</h2>
+<form action="." method="POST">
+<table>
+<tr>
+<td colspan="2">
+<input type="submit" value="GetInfo"/>
+</td>
+</tr>
+<input type="hidden" name="perform" value="getinfo"/>
+</table>
+</form>
+
+<?php
+
+	if ($perform == "getinfo"){
+	
+		$btclient = new BitcoinClient("http",$btclogin["username"],$btclogin["password"],$btclogin["host"],$btclogin["port"],"",$rpc_debug);
+		
+		$info = $btclient-> getinfo();
+		
+		
+		foreach ($info as $k => $v) {
+			print "<li>$k $v</li>";
+		}
+	
+	}
+
+?>
