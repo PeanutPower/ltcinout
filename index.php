@@ -3,7 +3,7 @@
 
 	require_once "db.inc";
 	require_once "bitcoin/bitcoin.inc";
-	require_once "poll.php";
+	//require_once "poll.php"; // uncomment this if you don't want to use cron
 
 	$perform = $_POST["perform"];
 	
@@ -63,3 +63,5 @@
 <input type="hidden" name="perform" value="register"/>
 </table>
 </form>
+
+<div>*Disclaimer* - for educational and entertainment purposes only. Transfer litecoins / play at your own risk. Minimum deposit 0.1 LTC. Maximum deposit 100 LTC. 100 Credits per LTC</div>

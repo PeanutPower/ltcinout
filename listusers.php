@@ -15,7 +15,7 @@
 		$row_balance = $row->balance;
 		$row_deposit_address = $row->dep_addr;
 		
-		print "<tr><td>$id</td><td>$row_name</td><td>$row_email</td><td>$row_balance</td><td>$row_deposit_address</td></tr>";
+		print "<tr><td>$id</td><td>$row_name</td><td>$row_email</td><td>$row_balance</td><td><a href=\"http://explorer.litecoin.net/address/$row_deposit_address\">$row_deposit_address</a></td></tr>";
 		
 	}
 

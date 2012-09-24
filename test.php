@@ -51,7 +51,8 @@
 		
 		print "$balance moved to hot wallet";
 		
-		$result = $db->query("UPDATE user SET balance = balance + $balance WHERE email = '$check_account' LIMIT 1;");
+		$credit_amount = $balance * 100;
+		$result = $db->query("UPDATE user SET balance = balance + $credit_amount WHERE email = '$check_account' LIMIT 1;");
 		
 		} else {
 		
