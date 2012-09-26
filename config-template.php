@@ -14,8 +14,9 @@ $btclogin = array(
 "password" =>   "",
 "host" =>       "",
 "port" =>       "9332");
-$rpc_debug = 0; // turn on rpc debugging messages ?
 
+$rpc_debug = 0; // turn on rpc debugging messages ?
 $safe_wallet_address = ""; // final address to forward payments to
+$salt = "putsometexthere"; // for generating activation keys
 
 ?>

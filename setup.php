@@ -19,6 +19,12 @@
 	if (!$result){
 		printf("error adding column to table: %s\n", mysqli_error($db));
 	}
+	
+	// add unique constraint on email column
+	$result = $db->query("ALTER TABLE user ADD CONSTRAINT UNIQUE (email);");
+	if (!$result){
+		printf("error adding unique constraint to table: %s\n", mysqli_error($db));
+	}
 		
 	// add "pass_sha" column to "user" table
 	$result = $db->query("ALTER TABLE user ADD COLUMN pass_sha varchar(40) NOT NULL DEFAULT '';");
@@ -27,7 +33,19 @@
 	}
 	
 	// add "balance" column to "user" table
-	$result = $db->query("ALTER TABLE user ADD COLUMN balance Decimal (19,4) NOT NULL DEFAULT 0;");
+	$result = $db->query("ALTER TABLE user ADD COLUMN balance INT(8) NOT NULL DEFAULT 0;");
+	if (!$result){
+		printf("error adding column to table: %s\n", mysqli_error($db));
+	}
+	
+	// add "verify_code" column to "user" table
+	$result = $db->query("ALTER TABLE user ADD COLUMN verify_code varchar(40) NOT NULL DEFAULT '';");
+	if (!$result){
+		printf("error adding column to table: %s\n", mysqli_error($db));
+	}
+	
+	// add "verified" column to "user" table
+	$result = $db->query("ALTER TABLE user ADD COLUMN verified int(1) NOT NULL DEFAULT 0;");
 	if (!$result){
 		printf("error adding column to table: %s\n", mysqli_error($db));
 	}
@@ -53,7 +71,7 @@
 		printf("error adding column to table: %s\n", mysqli_error($db));
 	}
 	
-	// add unique index on name column
+	// add unique index on email column
 	$result = $db->query("ALTER TABLE setting ADD UNIQUE INDEX name_index (name);");
 	if (!$result){
 		printf("error adding unique index to table: %s\n", mysqli_error($db));
